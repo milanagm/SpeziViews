@@ -41,7 +41,7 @@ public struct HorizontalGeometryReader<Content: View>: View {
             .onPreferenceChange(WidthPreferenceKey.self) { width in
                 Task { @MainActor in
                             self.width = width
-                      }
+                     }
             }
     }
     
