@@ -38,11 +38,16 @@ public struct HorizontalGeometryReader<Content: View>: View {
                         .preference(key: WidthPreferenceKey.self, value: geometry.size.width)
                 }
             )
-            .onPreferenceChange(WidthPreferenceKey.self) { width in
-                Task { @MainActor in
-                            self.width = width
-                     }
+        
+            .onPreferenceChange(WidthPreferenceKey.self) { newWidth in
+                updateWidth(newWidth)
             }
+
+            @MainActor
+            private func updateWidth(_ newWidth: CGFloat) {
+                self.width = newWidth
+            }
+
     }
     
     
